@@ -1,0 +1,69 @@
+<section class="layout sm:p-10">
+  <aside class="list-panel">
+    <div class="panel-title">Records</div>
+    <div class="record-list">
+      <button
+        *ngFor="let item of data"
+        type="button"
+        class="record-item"
+        [class.active]="item.id === selectedId"
+        (click)="selectRecord(item.id)"
+      >
+        <div class="record-name">{{ getListTitle(item) }}</div>
+        <div class="record-meta">{{ getListSubtitle(item) }}</div>
+      </button>
+    </div>
+  </aside>
+
+  <div class="form-panel">
+    <div class="panel-title">Edit</div>
+    <form [formGroup]="form" (ngSubmit)="save()">
+      <div class="form-grid">
+        <label *ngFor="let field of formFields">
+          <span>{{ field.label }}</span>
+          <ng-container [ngSwitch]="field.type">
+            <input
+              *ngSwitchCase="'text'"
+              [formControlName]="field.key"
+              type="text"
+              [placeholder]="field.label"
+            />
+            <input
+              *ngSwitchCase="'number'"
+              [formControlName]="field.key"
+              type="number"
+              step="1"
+            />
+            <input
+              *ngSwitchCase="'currency'"
+              [formControlName]="field.key"
+              type="number"
+              step="0.01"
+            />
+            <input
+              *ngSwitchCase="'date'"
+              [formControlName]="field.key"
+              type="text"
+              placeholder="YYYY-MM-DD"
+            />
+            <select *ngSwitchCase="'status'" [formControlName]="field.key">
+              <option *ngFor="let status of statusOptions" [value]="status">
+                {{ status }}
+              </option>
+            </select>
+          </ng-container>
+        </label>
+      </div>
+
+      <div class="form-actions">
+        <button
+          type="submit"
+          class="primary-button"
+          [disabled]="form.invalid || saving"
+        >
+          {{ saving ? "Saving..." : "Save changes" }}
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

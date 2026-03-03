@@ -1,0 +1,74 @@
+.app-shell {
+  min-height: 100vh;
+  background: radial-gradient(circle at top left, #101827, #06070d 55%);
+  color: #f8fafc;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 40px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(10px);
+}
+
+.brand {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.brand-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: #38bdf8;
+  box-shadow: 0 0 18px rgba(56, 189, 248, 0.65);
+}
+
+.title {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: 0.85rem;
+  color: rgba(226, 232, 240, 0.7);
+}
+
+.nav {
+  display: flex;
+  gap: 12px;
+}
+
+.nav-link {
+  padding: 8px 16px;
+  border-radius: 999px;
+  text-decoration: none;
+  color: rgba(226, 232, 240, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  transition: all 150ms ease;
+}
+
+.nav-link.active,
+.nav-link:hover {
+  color: #0f172a;
+  background: #f8fafc;
+  border-color: transparent;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.25);
+}
+
+// @media (max-width: 720px) {
+//   .app-header {
+//     flex-direction: column;
+//     align-items: flex-start;
+//     gap: 16px;
+//     padding: 20px 24px;
+//   }
+
+//   .app-content {
+//     padding: 24px;
+//   }
+// }
